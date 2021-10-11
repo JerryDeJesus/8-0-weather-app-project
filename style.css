@@ -1,5 +1,13 @@
+body{
+    display:grid;
+    grid-template-areas: 
+    "a a a a a"
+    ". . b c ."
+    "d d d . .";
+}
+
 #top{
-    border: 1px solid black;
+    border: 3px solid black;
     text-align: center;
     width:75%;
     margin-left: 12.5%;
@@ -8,32 +16,56 @@
     background-color: cadetblue;
 }
 
-body{
-    display:grid;
-    grid-template-areas: 
-    "a a a"
-    "b b c"
-    "d d .";
-    border: 1px solid black;
+form{
+    margin-bottom: 20px;
 }
 
+#replace{
+    border: 3px solid cadetblue;
+    width: 100%;
+    min-height: 100px;
+    text-align: center;
+    min-width: 400px;
+    margin:auto;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    background-color: lightgrey;
+}
 .display{
     grid-area: b;
     text-align: center;
-    border: 3px solid cadetblue;
-    width: 70%;
-    
+    width: 100%;
+    padding-bottom: 20px;
+    justify-items: end;
 }
 
 .history{
     grid-area: c;
-    width: 75%;
-    border: 3px solid cadetblue;
+    justify-self: start;
+    padding-top: 20px;
+    padding-left: 20px;
 }
 
 .future{
     grid-area: d;
     text-align: center;
-    margin-left: 20%;
-    margin-top: 3%;
+    margin:auto;
+    display: grid;
+    grid-template-areas:
+    "today tomorrow dayafter";
+}
+
+#today{
+    grid-area: today;
+    margin: 5px;
+}
+
+#tomorrow{
+    grid-area: tomorrow;
+    margin: 5px;
+}
+
+#dayafter{
+    grid-area: dayafter;
+    margin: 5px;
 }

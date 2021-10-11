@@ -2,9 +2,9 @@ const form = document.querySelector("form");
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
 
-    const location = e.target["pick-a-location"].value;
+    let location = e.target["pick-a-location"].value;
     console.log(location);
-    const url = `https://wttr.in/${location}?format=j1`;
+    let url = `https://wttr.in/${location}?format=j1`;
     document.querySelector("form input").value = "";
     fetch(url)
     .then((response)=>{
@@ -12,9 +12,11 @@ form.addEventListener("submit", (e)=>{
     })
     .then((data) =>{
         console.log(data);
-        const display = document.querySelector(".display");
-        display.textContent = "";
-        display.innerHTML = `<div id="display-location">
+        let placeholder = document.querySelector("#history-placeholder");
+        placeholder.style.visibility = "hidden";
+        const replace = document.querySelector("#replace");
+        replace.textContent = "";
+        replace.innerHTML = `<div id="display-location">
                             <h2>${location}</h2>
                         </div>
                         <div id="display-text">
@@ -24,18 +26,33 @@ form.addEventListener("submit", (e)=>{
                             <div id="display-currently">Currently: ${data.current_condition[0].FeelsLikeF}°F</div>
                         </div>
                         `;
-        const historyItem = document.createElement("li");
-        historyItem.innerHTML = `<a href="${url}">${data.nearest_area[0].areaName[0].value} - ${data.current_condition[0].FeelsLikeF}°F</a>`;
-        const allHistoryItems = document.querySelectorAll("ul li");
-        const repeated = false;
-        for(const eachItem of allHistoryItems){
-            if(eachItem.value === historyItem.value){
-                repeated = true;
-            }
-        }
-        const historyList = document.querySelector(".history-items");
-        if(!repeated){
-            historyList.appendChild(historyItem);
-        }
+        let historyList = document.querySelector(".history-items");
+        historyList.innerHTML += `<li><a href="#">${data.nearest_area[0].areaName[0].value}</a> - ${data.current_condition[0].FeelsLikeF}°F</li>`;
+        
+        const future = document.querySelector(".future");
+        future.innerHTML = `
+        <div id="today"><br>    <b>Today</b>
+        <br><br>
+        <b>Average Temperature:</b> ${data.weather[0].avgtempF}°F
+        <br><b>Min Temperature:</b> ${data.weather[0].mintempF}°F<br>  
+        <b>Max Temperature:</b> ${data.weather[0].maxtempF}°F</div> 
+        
+        <div id="tomorrow"><br>     <b>Tomorrow</b>
+        <br><br>
+        <b>Average Temperature:</b>  ${data.weather[1].avgtempF}°F<br>
+        <b>Min Temperature:</b> ${data.weather[1].mintempF}°F   
+        <br><b>Max Temperature:</b> ${data.weather[1].maxtempF}°F</div>
+
+        <div id="dayafter"><br>     <b>Day After Tomorrow</b>
+        <br><br>
+        <b>Average Temperature:</b>${data.weather[2].avgtempF}°F<br>
+        <b>Min Temperature:</b> ${data.weather[2].mintempF}°F   
+        <br><b>Max Temperature:</b> ${data.weather[2].maxtempF}°F</div>`
     })
+    .catch(console.log);
 })
+
+// .addEventListener("submit", (e)=>{
+//     e.preventDefault();
+
+// })
