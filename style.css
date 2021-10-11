@@ -2,8 +2,9 @@ body{
     display:grid;
     grid-template-areas: 
     "a a a a a"
-    ". . b c ."
+    ". b b c ."
     "d d d . .";
+    font-family: sans-serif;
 }
 
 #top{
@@ -13,7 +14,9 @@ body{
     margin-left: 12.5%;
     margin-right: 12.5%;
     grid-area: a;
-    background-color: cadetblue;
+    background-color: teal;
+    color: white;
+    
 }
 
 form{
@@ -32,18 +35,18 @@ form{
     background-color: lightgrey;
 }
 .display{
+    margin-left: 13%;
     grid-area: b;
     text-align: center;
-    width: 100%;
+    width: 80%;
     padding-bottom: 20px;
-    justify-items: end;
+    
 }
 
 .history{
     grid-area: c;
     justify-self: start;
     padding-top: 20px;
-    padding-left: 20px;
 }
 
 .future{
@@ -58,14 +61,17 @@ form{
 #today{
     grid-area: today;
     margin: 5px;
+    min-width: 220px;
 }
 
 #tomorrow{
     grid-area: tomorrow;
     margin: 5px;
+    min-width: 220px;
 }
 
 #dayafter{
     grid-area: dayafter;
     margin: 5px;
+    min-width: 220px;
 }

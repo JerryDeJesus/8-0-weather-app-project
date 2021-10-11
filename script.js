@@ -20,10 +20,10 @@ form.addEventListener("submit", (e)=>{
                             <h2>${location}</h2>
                         </div>
                         <div id="display-text">
-                            <div id="display-area">Area: ${data.nearest_area[0].areaName[0].value}</div>
-                            <div id="display-region">Region: ${data.nearest_area[0].region[0].value}</div>
-                            <div id="display-country">Country: ${data.nearest_area[0].country[0].value}</div>
-                            <div id="display-currently">Currently: ${data.current_condition[0].FeelsLikeF}°F</div>
+                            <div id="display-area"><b>Area:</b> ${data.nearest_area[0].areaName[0].value}</div><br>
+                            <div id="display-region"><b>Region:</b> ${data.nearest_area[0].region[0].value}</div><br>
+                            <div id="display-country"><b>Country:</b> ${data.nearest_area[0].country[0].value}</div><br>
+                            <div id="display-currently"><b>Currently:</b> ${data.current_condition[0].FeelsLikeF}°F</div>
                         </div>
                         `;
         let historyList = document.querySelector(".history-items");
@@ -34,20 +34,26 @@ form.addEventListener("submit", (e)=>{
         <div id="today"><br>    <b>Today</b>
         <br><br>
         <b>Average Temperature:</b> ${data.weather[0].avgtempF}°F
-        <br><b>Min Temperature:</b> ${data.weather[0].mintempF}°F<br>  
-        <b>Max Temperature:</b> ${data.weather[0].maxtempF}°F</div> 
+        <br><br>
+        <b>Min Temperature:</b> ${data.weather[0].mintempF}°F
+        <br><br>
+        <b>Max Temperature:</b> ${data.weather[0].maxtempF}°F   </div> 
         
         <div id="tomorrow"><br>     <b>Tomorrow</b>
         <br><br>
-        <b>Average Temperature:</b>  ${data.weather[1].avgtempF}°F<br>
+        <b>Average Temperature:</b> ${data.weather[1].avgtempF}°F
+        <br><br>
         <b>Min Temperature:</b> ${data.weather[1].mintempF}°F   
-        <br><b>Max Temperature:</b> ${data.weather[1].maxtempF}°F</div>
+        <br><br>
+        <b>Max Temperature:</b> ${data.weather[1].maxtempF}°F</div>
 
         <div id="dayafter"><br>     <b>Day After Tomorrow</b>
         <br><br>
-        <b>Average Temperature:</b>${data.weather[2].avgtempF}°F<br>
+        <b>Average Temperature:</b>${data.weather[2].avgtempF}°F
+        <br><br>
         <b>Min Temperature:</b> ${data.weather[2].mintempF}°F   
-        <br><b>Max Temperature:</b> ${data.weather[2].maxtempF}°F</div>`
+        <br><br>
+        <b>Max Temperature:</b> ${data.weather[2].maxtempF}°F</div>`
     })
     .catch(console.log);
 })
